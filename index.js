@@ -1,14 +1,28 @@
 // Require the necessary discord.js classes
-const { Client, Intents } = require('discord.js');
+const { Client, Intents, Collection } = require('discord.js');
 const { token } = require('./config.json');
 
 // Create a new client instance
-const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
+global.client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 
-// When the client is ready, run this code (only once)
-client.once('ready', () => {
-	console.log('Ready!');
-});
+
+/**
+ * Create a Collection to store App commands.
+ */
+
+global.client.commands = new Collection();
+
+/**
+ * Load Commands and Events.
+ */
+
+require('./src/generators/loader');
+
+/**
+ * Deploy Slash Commands (Integrateds).
+ */
+
+require('./src/generators/deploy-commands');
 
 // Login to Discord with your client's token
-client.login(token);
+global.client.login(token);
