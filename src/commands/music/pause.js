@@ -23,19 +23,26 @@ module.exports = {
          * Set 'Bot is thinking...'
          */
         await interaction.deferReply()
-        await wait(2000);
+        await wait(1000);
+
+        const queue = player.getQueue(interaction.guild.id);
+
+        if (!queue) return interaction.editReply({ embeds: [new MessageEmbed().setDescription('No hay música en reproducción')]});
+
+        queue.setPaused(true);
 
         /**
          * Embed Message to reply.
          */
         const embed = new MessageEmbed()
-            .setTitle('▶️ Playing...')
-            .setDescription("Song Name")
-            // .setThumbnail("")
+        .setTitle('⏸️ Paused')
+            .setColor('BLUE')
+            .setDescription(`${queue.current.title}`)
+            .setThumbnail(`${queue.current.thumbnail}`)
 
         /**
          * Reply.
          */
-        await interaction.editReply({ embeds: [embed]})
+        await interaction.editReply({embeds: [embed]})
     }
 }

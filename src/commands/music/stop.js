@@ -16,21 +16,38 @@ module.exports = {
         /**
          * Set 'Bot is thinking...'
          */
-         await interaction.deferReply()
-         await wait(2000);
+        await interaction.deferReply()
+        await wait(2000);
+
+        /**
+         * Instances
+         */
+        const queue = global.player.getQueue(interaction.guild.id);
+
+        /**
+         * If there is not music currently playing.
+         */
+        if (!queue || !queue.playing) return;
+
+        /**
+         * Delete the queue.
+         */
+        queue.destroy();
 
          /**
          * Embed Message to reply.
          */
         const embed = new MessageEmbed()
-            .setTitle('▶️ Stopped.')
-            .setDescription("Song Name")
-            // .setThumbnail("")
+            .setColor('RED')
+            .setTitle('⏹ Music has been stopped')
+            .setDescription('See you later! 🙋‍♂️')
+          // .setDescription(queue.previousTracks[0].title)
+          // .setThumbnail(queue.previousTracks[0].thumbnail)
 
         /**
          * Reply.
          */
-         await interaction.editReply({ embeds: [embed]});
+         await interaction.editReply({ embeds: [embed] });
 
     }
 

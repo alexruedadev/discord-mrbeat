@@ -15,10 +15,14 @@ global.client = new Client({
 });
 
 /**
- * Create a Collection to store App commands.
+ * Create a Collection to store commands.
  */
 global.client.commands = new Collection();
 
+/**
+ * Player Instance.
+ */
+ require('./src/plugins/discord-player');
 /**
  * Load Commands and Event files.
  */

@@ -24,7 +24,10 @@
     "@discordjs/builders": "^0.12.0",
     "@discordjs/rest": "^0.3.0",
     "discord-api-types": "^0.31.0",
-    "discord.js": "^13.6.0"
+    "discord-player": "^5.2.2",
+    "discord.js": "^13.6.0",
+    "ffmpeg-static": "^4.4.1",
+    "opusscript": "^0.0.8"
   },
   "devDependencies": {
     "eslint": "^8.12.0",
