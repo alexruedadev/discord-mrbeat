@@ -4,11 +4,27 @@ const wait = require('node:timers/promises').setTimeout;
 
 module.exports = {
 
+    /**
+     * Command Propieties
+     */
     data: new SlashCommandBuilder()
     .setName('search')
-    .setDescription('Search the song you want'),
+    .setDescription('Search the song you want')
+    .addSubcommand(subcommand =>
+		subcommand
+			.setName('youtube')
+			.setDescription('Search on Youtube')
+			.addUserOption(option => option.setName('videoclip').setDescription('the youtube video')))
+	.addSubcommand(subcommand =>
+		subcommand
+			.setName('spotify')
+			.setDescription('Search on Spotify')),
     
-
+    /**
+     * Command Action to execute.
+     * 
+     * @param {*} interaction 
+     */
     async execute(interaction){
 
         await interaction.deferReply()

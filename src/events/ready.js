@@ -11,9 +11,9 @@ module.exports = {
 		client.user.setPresence({
 			status: 'online',
 			activities: [{
-				name: 'music',
+				name: 'Music',
 				type: 'STREAMING',
-				url: ''
+				url: 'https://twitch.tv/alexdiple'
 			}]
 		})
 	}

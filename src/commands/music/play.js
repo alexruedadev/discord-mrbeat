@@ -1,8 +1,12 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { MessageEmbed } = require('discord.js');
+const wait = require('node:timers/promises').setTimeout;
 
 module.exports = {
 
+    /**
+     * Command Propieties
+     */
     data: new SlashCommandBuilder()
     .setName('play')
     .setDescription('Plays the song you want')
@@ -11,10 +15,21 @@ module.exports = {
             .setDescription('Say the song you want to play')
             .setRequired(true)),
 
+    /**
+     * Command Action to execute.
+     * 
+     * @param {*} interaction 
+     */
     async execute(interaction){
 
         /**
-         * Embed Message
+         * Set 'Bot is thinking...'
+         */
+        await interaction.deferReply()
+        await wait(2000);
+
+        /**
+         * Embed Message to reply.
          */
         const embed = new MessageEmbed()
             .setTitle('▶️ Playing...')
@@ -22,8 +37,8 @@ module.exports = {
             // .setThumbnail("")
 
         /**
-         * Reply
+         * Reply.
          */
-        interaction.reply({ embeds: [embed]})
+        await interaction.editReply({ embeds: [embed]})
     }
 }
