@@ -1,3 +1,7 @@
 node_modules
 .env
 config.json
+back.js
+loop.js
+skip.js
+volume.js

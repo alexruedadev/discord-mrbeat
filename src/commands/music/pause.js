@@ -8,13 +8,10 @@ module.exports = {
      * Command Propieties
      */
     data: new SlashCommandBuilder()
-    .setName('search')
-    .setDescription('Search the song you want')
-    .addUserOption(option => option.setName('youtube').setDescription('Search on YouTube.'))
-    .addUserOption(option => option.setName('spotify').setDescription('Search on Spotify.'))
-    .addUserOption(option => option.setName('twitch').setDescription('Search on Twitch.')),
-			
-    
+    .setName('pause')
+    .setDescription('Pause the currently playing song.'),
+
+
     /**
      * Command Action to execute.
      * 
@@ -22,16 +19,22 @@ module.exports = {
      */
     async execute(interaction){
 
-        await interaction.deferReply()
         /**
-         * Embed Message
+         * Set 'Bot is thinking...'
+         */
+        await interaction.deferReply()
+        await wait(2000);
+
+        /**
+         * Embed Message to reply.
          */
         const embed = new MessageEmbed()
-            .setTitle('Searched!')
+            .setTitle('▶️ Playing...')
+            .setDescription("Song Name")
+            // .setThumbnail("")
 
-        await wait(2000);
         /**
-         * Reply
+         * Reply.
          */
         await interaction.editReply({ embeds: [embed]})
     }
