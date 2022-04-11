@@ -61,10 +61,11 @@
 # Installation
 
 # Commands
-
- > ````
- > /play
- > ````
+Play
+> Play music searching with song name.
+> ````
+> /play <song name>
+> ````
 
 `/pause`
 
