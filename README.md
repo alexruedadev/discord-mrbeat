@@ -65,7 +65,7 @@
 > ````
 > /play <song name>
 > ````
-
+  
 ⏸️ Pause
 > Pause the current playing track.
 > ````
@@ -108,5 +108,3 @@
 > In process...
 
 # Support
-
-# License
