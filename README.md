@@ -42,27 +42,29 @@
 
 ### Features
 
-✅ Installation with [one click](#installation).
+> ✅ Installation with [one click](#installation).
 
-✅ Controll music with easy [/commands](#Commands).
+> ✅ Controll music with easy [/commands](#Commands).
 
 
 
 ### Future Features
 
-⬜ Create playlists with your favourite tracks.
+> ⬜ Create playlists with your favourite tracks.
 
-⬜ Assign DJ Role to single/multiple users.
+> ⬜ Assign DJ Role to single/multiple users.
 
-⬜ Connect with Spotify playlists.
+> ⬜ Connect with Spotify playlists.
 
-⬜ Dashboard to manage music without commands.
+> ⬜ Dashboard to manage music without commands.
 
 # Installation
 
 # Commands
 
-`/play`
+ > ````
+ > /play
+ > ````
 
 `/pause`
 
