@@ -66,8 +66,11 @@
 > ````
 > /play <song name>
 > ````
-
-`/pause`
+⏸️ Pause
+> Pause the current playing track.
+> ````
+> `/pause`
+> ````
 
 `/replay`
 
