@@ -61,7 +61,7 @@
 # Installation
 
 # Commands
-Play
+▶️ Play
 > Play music searching with song name.
 > ````
 > /play <song name>
