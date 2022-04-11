@@ -72,15 +72,30 @@
 > `/pause`
 > ````
 
-`/replay`
 
-`/stop`
+> Replay the paused track.
+> ````
+>`/replay`
+> ````
 
-`/skip`
+> ````
+>`/stop`
+> ````
+  
+> ````
+> /skip
+> ````
 
-`/back`
+> ````
+> /back
+> ````
 
-`/volume`
+🎛️ Volume
+> Controll the volume for all users.
+> ````
+> /volume 50
+> ````
+> Turns volume to 50%
 
 # Documentation
 
