@@ -1,54 +1,37 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const { MessageEmbed } = require('discord.js');
 const wait = require('node:timers/promises').setTimeout;
 
 module.exports = {
 
-    /**
-     * Command Propieties
-     */
+    // Slash Command Properties
     data: new SlashCommandBuilder()
         .setName('stop')
         .setDescription('Stop all the music activity.'),
 
+    /**
+     * Command Action.
+     * 
+     * @param {*} interaction is the <CommandInteraction> object created from Command.
+     * @returns ?
+     */
     async execute(interaction){
 
-        /**
-         * Set 'Bot is thinking...'
-         */
-        await interaction.deferReply()
-        await wait(2000);
+        // Defer the reply (Send reply with 'Bot is thinking...').
+        await interaction.deferReply();
+        await wait(1000);
 
-        /**
-         * Instances
-         */
+        // Get queue.
         const queue = global.player.getQueue(interaction.guild.id);
 
-        /**
-         * If there is not music currently playing.
-         */
+        // If there is not music currently playing.
         if (!queue || !queue.playing) return;
 
-        /**
-         * Delete the queue.
-         */
+        // Delete the queue.
         queue.destroy();
 
-         /**
-         * Embed Message to reply.
-         */
-        const embed = new MessageEmbed()
-            .setColor('RED')
-            .setTitle('⏹ Music has been stopped')
-            .setDescription('See you later! 🙋‍♂️')
-          // .setDescription(queue.previousTracks[0].title)
-          // .setThumbnail(queue.previousTracks[0].thumbnail)
-
-        /**
-         * Reply.
-         */
-         await interaction.editReply({ embeds: [embed] });
-
+        // Reply.
+        await interaction.editReply({
+            content: `Music has been stopped. See you later!`
+        });
     }
-
 }

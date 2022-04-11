@@ -4,12 +4,10 @@ const wait = require('node:timers/promises').setTimeout;
 
 module.exports = {
 
-    /**
-     * Command Properties.
-     */
+    // Slash Command Properties.
     data: new SlashCommandBuilder()
-        .setName('pause')
-        .setDescription('Pause the currently playing song.'),
+        .setName('skip')
+        .setDescription('Play the next song on the playlist'),
 
     /**
      * Command Action.
@@ -27,16 +25,16 @@ module.exports = {
         const queue = player.getQueue(interaction.guild.id);
 
         // Check if queue exists.
-        if (!queue) return interaction.editReply({
+        if (!queue || !queue.playing) return interaction.editReply({ 
             embeds: [new MessageEmbed().setDescription('There is not music currenly playing.')]
         });
-
-        // Pause the queue.
-        queue.setPaused(true);
+ 
+        // Skip the current song.
+        queue.skip();
 
         // Reply.
-        await interaction.editReply({
-            embeds: [new MessageEmbed().setDescription(`**${queue.current.title}** paused.`)]
+        await interaction.editReply({ 
+            embeds: [new MessageEmbed().setDescription(`**${queue.current.title}** skipped.`)]
         });
     }
 }

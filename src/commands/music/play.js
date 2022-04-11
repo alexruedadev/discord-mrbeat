@@ -4,7 +4,7 @@ const { QueryType } = require('discord-player');
 
 module.exports = {
 
-    // Slash Command Propeties
+    // Slash Command Properties
     data: new SlashCommandBuilder()
         .setName('play')
         .setDescription('Plays the song you want')
@@ -16,7 +16,8 @@ module.exports = {
     /**
      * Command Action.
      * 
-     * @param {*} interaction is the <CommandInteraction> created from Command.
+     * @param {*} interaction is the <CommandInteraction> object created from Command.
+     * @returns ?
      */
     async execute(interaction){
 

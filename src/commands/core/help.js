@@ -1,18 +1,22 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const { MessageActionRow, MessageEmbed, MessageSelectMenu } = require('discord.js');
-
+const { MessageActionRow, MessageSelectMenu } = require('discord.js');
 
 module.exports = {
 
+	// Slash Command Properties.
     data: new SlashCommandBuilder()
-    .setName('help')
-    .setDescription('Help about Mr Beat'),
+		.setName('help')
+		.setDescription('Help about Mr Beat'),
 
+	/**
+     * Command Action.
+     * 
+     * @param {*} interaction is the <CommandInteraction> object created from Command.
+     * @returns ?
+     */
     async execute(interaction){
 
-        /**
-         * Select menu.
-         */
+        // Select Menu
         const row = new MessageActionRow()
 			.addComponents(
 				new MessageSelectMenu()
@@ -40,19 +44,10 @@ module.exports = {
 							value: 'admin',
 						},
 					]),
-			)
+			);
 
-        /**
-        * Embed Message to reply.
-        */
-        const embed = new MessageEmbed()
-		.setColor('#0099ff')
-		.setTitle('Some title')
-		.setURL('https://discord.js.org/')
-		.setDescription('Some description here');
-
+		// Reply.
         await interaction.reply({ components: [row] });
     }
-
 }
 

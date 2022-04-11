@@ -5,36 +5,38 @@ const wait = require('node:timers/promises').setTimeout;
 module.exports = {
 
     /**
-     * Command Propieties
+     * Command Properties
      */
     data: new SlashCommandBuilder()
-    .setName('replay')
-    .setDescription('Replays the current paused song'),
+        .setName('replay')
+        .setDescription('Replays the current paused song'),
 
     /**
-     * Command Action to execute.
+     * Command Action.
      * 
-     * @param {*} interaction 
+     * @param {*} interaction is the <CommandInteraction> object created from Command.
+     * @returns ?
      */
     async execute(interaction){
 
-        /**
-         * Set 'Bot is thinking...'
-         */
+        // Defer the reply (Send reply with 'Bot is thinking...')
         await interaction.deferReply()
-        await wait(2000);
+        await wait(1000);
 
-        /**
-         * Embed Message to reply.
-         */
-        const embed = new MessageEmbed()
-            .setTitle('▶️ Playing...')
-            .setDescription("Song Name")
-            // .setThumbnail("")
+        // Get queue.
+        const queue = player.getQueue(interaction.guild.id);
 
-        /**
-         * Reply.
-         */
-        await interaction.editReply({ embeds: [embed]})
+        // Check if queue exists.
+        if (!queue) return interaction.editReply({
+            embeds: [new MessageEmbed().setDescription('There is not music currenly playing.')]
+        });
+
+        // Pause the queue.
+        queue.setPaused(false);
+
+        // Reply.
+        await interaction.editReply({
+            embeds: [new MessageEmbed().setDescription(`Replaying **${queue.current.title}**`)]
+        })
     }
 }
