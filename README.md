@@ -8,7 +8,7 @@
   <br>
 </h1>
 
-<h4 align="center"><b>♪ The easiest way to play music ♪</b> on your Discord Channel.</h4>
+<h4 align="center"><b>♪ The easiest way to play music ♪</b> on your Discord Server.</h4>
 
 <p align="center">
   <a href="#overview">Overview</a>
@@ -38,14 +38,13 @@
 
 # Overview
 
-**Mr Beat** is simple, fast and friendly bot to play music on your Discord Channel. You don't have to download songs, share your sound, or any complicated issue to enjoy music with your friends. Just add **Punchy♪** to your channel and he will do all the work.
+**Mr Beat** is simple, fast and friendly bot to play music on your Discord Server. You don't have to download songs, share your sound, or any complicated issue to enjoy music with your friends. Just add **Mr Beat ♪** to your server and he will do all the work.
 
 ### Features
 
-> ✅ Installation with [one click](#installation).
+✅ Installation with [one click](#installation).
 
-> ✅ Controll music with easy [/commands](#Commands).
-
+✅ Controll music with easy [/commands](#Commands).
 
 
 ### Future Features
@@ -66,26 +65,33 @@
 > ````
 > /play <song name>
 > ````
+
 ⏸️ Pause
 > Pause the current playing track.
 > ````
-> `/pause`
+> /pause
 > ````
 
+⏯ Replay
+> Continue playing the paused track.
+> ````
+>/replay
+> ````
 
-> Replay the paused track.
+⏹️ Stop
+> Stop the music and bot leaves from voice channel.
 > ````
->`/replay`
+>/stop
 > ````
 
-> ````
->`/stop`
-> ````
-  
+⏭️ Skip
+> Play the next song in playlist.
 > ````
 > /skip
 > ````
 
+⏪ Back
+> Play the previous track in playlist.
 > ````
 > /back
 > ````
