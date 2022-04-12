@@ -9,8 +9,8 @@ module.exports = {
         .setName('play')
         .setDescription('Plays the song you want')
         .addStringOption(option => 
-            option.setName('song')
-                .setDescription('Say the song you want to play')
+            option.setName('music')
+                .setDescription('Put the song name or Playlist link from Spotify or YouTube')
                 .setRequired(true)),
 
     /**
@@ -30,7 +30,7 @@ module.exports = {
         const channelId = interaction.channelId;
 
         // String Query.
-        const song = interaction.options.getString('song');
+        const song = interaction.options.getString('music');
  
         // Fetch the song.
         const query = await global.player.search(song, {
@@ -62,7 +62,7 @@ module.exports = {
 
         // Send reply to text channel.
         await interaction.editReply({ 
-            content: `**${queue.current.title}** added to queue.`
+            content: `**${query.tracks[0]}** added to queue.`
          });
     }
 }

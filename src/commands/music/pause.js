@@ -4,9 +4,7 @@ const wait = require('node:timers/promises').setTimeout;
 
 module.exports = {
 
-    /**
-     * Command Properties.
-     */
+    // Slash Command Properties.
     data: new SlashCommandBuilder()
         .setName('pause')
         .setDescription('Pauses the currently playing song.'),

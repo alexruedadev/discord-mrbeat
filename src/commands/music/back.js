@@ -19,7 +19,7 @@ module.exports = {
 
         // Defer the reply. (Send reply with 'Bot is thinking...')
         await interaction.deferReply();
-        await wait(2000);
+        await wait(1000);
 
         // Get the queue.
         const queue = player.getQueue(interaction.guild.id);

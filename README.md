@@ -101,17 +101,9 @@
 > ````
 > /volume 50
 > ````
-<<<<<<< HEAD
-=======
-> Turns volume to 50%
->>>>>>> 7b7ab984a32b542780ae31e6ca158bf9f3b4957c
 
 # Documentation
 
 > In process...
 
-<<<<<<< HEAD
 # Support
-=======
-# Support
->>>>>>> 7b7ab984a32b542780ae31e6ca158bf9f3b4957c

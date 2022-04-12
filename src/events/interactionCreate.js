@@ -1,5 +1,6 @@
 const { MessageEmbed } = require('discord.js');
 const wait = require('node:timers/promises').setTimeout;
+// const { playerHandler } = require('../plugins/discord-player-handler');
 
 module.exports = {
 	name: 'interactionCreate',
@@ -14,6 +15,9 @@ module.exports = {
 			const command = interaction.client.commands.get(interaction.commandName);
 
 			if (!command) return;
+			
+			/////////////////////////////////////////////////////////////////
+			// global.player.handler = new playerHandler(interaction.channelId);
 
 			try {
 				await command.execute(interaction);
@@ -55,6 +59,26 @@ module.exports = {
 				}
 			}
 		}
+
+		/**
+		 * If interaction is Button
+		 */
+		else if(interaction.isButton()){
+
+			const filter = i => i.customId === 'nextsongs'
+
+			const collector = interaction.channel.createMessageComponentCollector({ filter, time: 15000 });
+
+			collector.on('collect', async i => {
+				if (i.customId === 'nextsongs') {
+					await i.deferUpdate();
+					await wait(1000);
+					await i.editReply({ content: 'A button was clicked!', components: [] });
+				}
+			});
+
+		}
+
 		console.log(`${interaction.user.tag} in #${interaction.channel.name} triggered an interaction.`);
 	},
 };
