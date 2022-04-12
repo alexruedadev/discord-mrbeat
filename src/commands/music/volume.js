@@ -9,7 +9,7 @@ module.exports = {
     // Slash Command Properties.
     data: new SlashCommandBuilder()
         .setName('volume')
-        .setDescription('Turn up/down volume for all users.')
+        .setDescription('Turns up/down the volume for all users.')
         .addStringOption(option => 
             option.setName('number')
                 .setDescription(`value between 0 / ${maxVol}`)

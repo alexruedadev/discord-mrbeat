@@ -9,7 +9,7 @@ module.exports = {
      */
     data: new SlashCommandBuilder()
         .setName('pause')
-        .setDescription('Pause the currently playing song.'),
+        .setDescription('Pauses the currently playing song.'),
 
     /**
      * Command Action.

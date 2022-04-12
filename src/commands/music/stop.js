@@ -6,7 +6,7 @@ module.exports = {
     // Slash Command Properties
     data: new SlashCommandBuilder()
         .setName('stop')
-        .setDescription('Stop all the music activity.'),
+        .setDescription('Stops the music and leaves from channel.'),
 
     /**
      * Command Action.

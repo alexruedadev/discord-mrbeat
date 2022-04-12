@@ -7,7 +7,7 @@ module.exports = {
     // Slash Command Properties.
     data: new SlashCommandBuilder()
         .setName('back')
-        .setDescription('Play the previous song.'),
+        .setDescription('Plays the previous song.'),
 
     /**
      * Command Action.
