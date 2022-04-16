@@ -19,22 +19,21 @@ module.exports = {
 
         // Defer the reply (Send reply with 'Bot is thinking...')
         await interaction.deferReply()
-        await wait(1000);
-
+        
         // Get queue.
         const queue = player.getQueue(interaction.guild.id);
 
         // Check if queue exists.
-        if (!queue || !queue.playing) return interaction.editReply({ 
-            embeds: [new MessageEmbed().setDescription('There is not music currenly playing.')]
-        });
+        if (!queue || !queue.playing) return interaction.editReply({content:`There is not music currently playing`, ephemeral: true});
  
         // Skip the current song.
         queue.skip();
 
         // Reply.
-        await interaction.editReply({ 
-            embeds: [new MessageEmbed().setDescription(`**${queue.current.title}** skipped.`)]
-        });
+        await interaction.editReply({content:`${queue.current.title} has been skipped`, ephemeral: true});
+
+        // Wait and Delete Reply.
+        await wait(3000);
+        await interaction.deleteReply();
     }
 }

@@ -19,7 +19,6 @@ module.exports = {
 
         // Defer the reply (Send reply with 'Bot is thinking...')
         await interaction.deferReply()
-        await wait(1000);
 
         // Get queue.
         const queue = player.getQueue(interaction.guild.id);
@@ -32,9 +31,17 @@ module.exports = {
         // Pause the queue.
         queue.setPaused(true);
 
-        // Reply.
-        await interaction.editReply({
-            embeds: [new MessageEmbed().setDescription(`**${queue.current.title}** paused.`)]
-        });
+        // Update the Visual Player
+        queue.options.interaction.editReply({ content: " ", embeds: [
+            new MessageEmbed()
+                .setAuthor({ name: 'YouTube Track', iconURL: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/2560px-YouTube_full-color_icon_%282017%29.svg.png', url: queue.current.url })
+                .setDescription(`\`▶️ Paused \`\n\n **${queue.current.title}** | ${queue.current.author}`)
+                .setThumbnail(queue.current.thumbnail)
+        ]});
+
+        // Reply and delete reply.
+        await interaction.followUp({content:`${interaction.user.username} you have paused the music.`, ephemeral: true });
+        await wait(3000);
+        await interaction.deleteReply();
     }
 }

@@ -1,5 +1,4 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const { MessageEmbed } = require('discord.js');
 const wait = require('node:timers/promises').setTimeout;
 
 module.exports = {
@@ -17,29 +16,27 @@ module.exports = {
      */
     async execute(interaction){
 
-        // Defer the reply. (Send reply with 'Bot is thinking...')
+        // Defer the reply.
         await interaction.deferReply();
-        await wait(1000);
 
         // Get the queue.
         const queue = player.getQueue(interaction.guild.id);
 
         // Check if queue exists.
-        if (!queue || !queue.playing) return interaction.editReply({
-            embeds: [new MessageEmbed().setDescription('There is not music currenly playing.')]
-        });
+        if (!queue || !queue.playing) return interaction.editReply(`There is not music currenly playing.`);
 
-        // Check if previous tracks exists.
-        if (!queue.previousTracks[1]) return interaction.editReply({ 
-            embeds: [new MessageEmbed().setDescription(`There is not previous track to play.`)]
-        });
+        if (!queue.previousTracks[1]) return await interaction.editReply(`There is not previous track to play.`)
+            .then(() => wait(3000))
+            .then(() => interaction.deleteReply());
 
         // Plays the previous track.
         await queue.back();
-
+        
         // Reply.
-        await interaction.editReply({
-            embeds: [new MessageEmbed().setDescription(`Playing back **${queue.previousTracks[1]}**`)]
-        });
+        await interaction.editReply(`Playing previous track: **${queue.previousTracks[1]}**`)
+        
+        // Wait and delete the reply.
+        await wait(3000);
+        await interaction.deleteReply();
     }
 }

@@ -38,6 +38,7 @@ module.exports = {
 
         const row = new MessageActionRow()
 			.addComponents(
+
 				new MessageButton()
                 .setCustomId('nextsongs')
                 .setLabel('Next Songs')
@@ -47,6 +48,8 @@ module.exports = {
                 .setLabel('View on Spotify')
                 .setStyle('LINK')
                 .setURL('https://spotify.com'),
+
+                
 
 			);
 

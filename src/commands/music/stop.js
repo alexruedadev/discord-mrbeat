@@ -16,22 +16,24 @@ module.exports = {
      */
     async execute(interaction){
 
-        // Defer the reply (Send reply with 'Bot is thinking...').
+        // Defer the reply.
         await interaction.deferReply();
-        await wait(1000);
 
         // Get queue.
         const queue = global.player.getQueue(interaction.guild.id);
 
         // If there is not music currently playing.
-        if (!queue || !queue.playing) return;
+        if(!queue || !queue.playing){
+            await interaction.editReply({content: `There is not music currently playing`, ephemeral: true})
+                .then(()=> wait(3000))
+                .then(() => interaction.deleteReply());
 
-        // Delete the queue.
-        queue.destroy();
-
-        // Reply.
-        await interaction.editReply({
-            content: `Music has been stopped. See you later!`
-        });
+        // If there is music currently playing.
+        }else{
+            await queue.destroy();
+            await interaction.editReply(`Music has been stopped. See you later!`)
+                .then(()=> wait(3000))
+                .then(() => interaction.deleteReply());
+        }
     }
 }

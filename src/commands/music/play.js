@@ -39,8 +39,9 @@ module.exports = {
         });
 
         // Create a Queue.
-        const queue = await global.player.createQueue(guildId, {
-            metadata: channelId
+        const queue = await global.player.createQueue(interaction.guildId, {
+            metadata: interaction.channelId,
+            interaction: interaction
         });
 
         // Connect to voice channel. If user is not connected to anyone, send a reply. 
@@ -48,7 +49,7 @@ module.exports = {
             if (!queue.connection) await queue.connect(interaction.member.voice.channel);
         } catch {
             await global.player.deleteQueue(guildId);
-            return interaction.reply({
+            return interaction.editReply({
                 content: `Hey \`@${interaction.user.username}\`, you must join a voice channel to play music! :3`, 
                 ephemeral: true,
             });
@@ -61,8 +62,6 @@ module.exports = {
         if (!queue.playing) await queue.play();
 
         // Send reply to text channel.
-        await interaction.editReply({ 
-            content: `**${query.tracks[0]}** added to queue.`
-         });
+        // await interaction.deleteReply();
     }
 }
