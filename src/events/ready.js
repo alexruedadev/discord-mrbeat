@@ -5,7 +5,7 @@ module.exports = {
 
 		/**
 		 * Set Bot Status
-		 * 
+		 *
 		 * Activities: https://discord.js.org/#/docs/discord.js/stable/class/Activity
 		 */
 		client.user.setPresence({
@@ -13,9 +13,8 @@ module.exports = {
 			activities: [{
 				name: 'Music',
 				type: 'STREAMING',
-				url: 'https://twitch.tv/alexdiple'
-			}]
-		})
-
-	}
-}
+				url: 'https://twitch.tv/alexdiple',
+			}],
+		});
+	},
+};

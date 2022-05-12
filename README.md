@@ -30,7 +30,7 @@
 
 </div>
 
-<div id="suports" align="center">
+<div id="suports" align="center" style="display: flex">
     <p>Supports</p>
     <img src="https://cdn-icons-png.flaticon.com/512/2111/2111624.png" width="25px" style="padding-right:20px"/>
     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/2560px-YouTube_full-color_icon_%282017%29.svg.png" width="28px"/>
@@ -46,14 +46,14 @@
 
 ✅ Controll music with easy [/commands](#Commands).
 
+✅ Play Spotify and YouTube playlists.
+
 
 ### Future Features
 
 > ⬜ Create playlists with your favourite tracks.
 
 > ⬜ Assign DJ Role to single/multiple users.
-
-> ⬜ Connect with Spotify playlists.
 
 > ⬜ Dashboard to manage music without commands.
 

@@ -7,7 +7,7 @@ module.exports = {
 	async execute(interaction) {
 
 		// If Interaction is Command.
-        if (interaction.isCommand()){
+		if (interaction.isCommand()) {
 
 			const command = interaction.client.commands.get(interaction.commandName);
 
@@ -15,7 +15,8 @@ module.exports = {
 
 			try {
 				await command.execute(interaction);
-			} catch (error) {
+			}
+			catch (error) {
 				console.error(error);
 				await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
 			}
@@ -23,30 +24,26 @@ module.exports = {
 		}
 
 		// If Interaction is a Select from menu.
-		else if(interaction.isSelectMenu()){
+		else if (interaction.isSelectMenu()) {
 
-			 if (interaction.customId === 'select') {
+			if (interaction.customId === 'select') {
 
 				const option = interaction.values[0];
 
-				if(option == "commands"){
-
+				if (option == 'commands') {
 					const commands = interaction.client.commands;
+					const embed = new MessageEmbed();
+					embed.addField('Commands \n', commands.map(command => `\`${command.data.name}\` | ${command.data.description}`).join('\n'));
 
-					const embed = new MessageEmbed()
-
-						embed.addField(`Commands \n`, commands.map(command => `\`${command.data.name}\` | ${command.data.description}`).join('\n'));
-
-					await interaction.update({ embeds: [embed]});
+					await interaction.update({ embeds: [embed] });
 				}
 			}
 		}
 
 		// If interaction is Button.
-		else if(interaction.isButton()){
+		else if (interaction.isButton()) {
 
-			const filter = i => i.customId === 'nextsongs'
-
+			const filter = i => i.customId === 'nextsongs';
 			const collector = interaction.channel.createMessageComponentCollector({ filter, time: 15000 });
 
 			collector.on('collect', async i => {
