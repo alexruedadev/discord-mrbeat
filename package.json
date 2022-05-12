@@ -11,15 +11,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alexdiple/Discord-MrBeat.git"
+    "url": "git+https://github.com/alexruedadev/discord-mrbeat.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/alexdiple/Discord-MrBeat/issues"
+    "url": "https://github.com/alexruedadev/discord-mrbeat/issues"
   },
-  "homepage": "https://github.com/alexdiple/Discord-MrBeat#readme",
+  "homepage": "https://github.com/alexruedadev/discord-mrbeat#readme",
   "dependencies": {
     "@discordjs/builders": "^0.12.0",
     "@discordjs/rest": "^0.3.0",
