@@ -46,14 +46,14 @@
 
 ✅ Controll music with easy [/commands](#Commands).
 
+✅ Play Spotify and YouTube playlists.
+
 
 ### Future Features
 
 > ⬜ Create playlists with your favourite tracks.
 
 > ⬜ Assign DJ Role to single/multiple users.
-
-> ⬜ Connect with Spotify playlists.
 
 > ⬜ Dashboard to manage music without commands.
 
